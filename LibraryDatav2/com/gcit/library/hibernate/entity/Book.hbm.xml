@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 27, 2013 2:06:00 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.gcit.library.hibernate.entity.Book" table="book" catalog="library">
+        <id name="bookId" type="int">
+            <column name="BookId" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="publisher" class="com.gcit.library.hibernate.entity.Publisher" fetch="select">
+            <column name="PublisherName" length="45" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="Title" length="45" not-null="true" />
+        </property>
+        <set name="bookCopieses" table="book_copies" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BookId" not-null="true" />
+            </key>
+            <one-to-many class="com.gcit.library.hibernate.entity.BookCopies" />
+        </set>
+        <set name="bookAuthorses" table="book_authors" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BookId" not-null="true" />
+            </key>
+            <one-to-many class="com.gcit.library.hibernate.entity.BookAuthors" />
+        </set>
+        <set name="bookLoanses" table="book_loans" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BookId" not-null="true" />
+            </key>
+            <one-to-many class="com.gcit.library.hibernate.entity.BookLoans" />
+        </set>
+    </class>
+</hibernate-mapping>

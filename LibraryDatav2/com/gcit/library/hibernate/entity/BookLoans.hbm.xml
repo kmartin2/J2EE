@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 27, 2013 2:06:00 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.gcit.library.hibernate.entity.BookLoans" table="book_loans" catalog="library">
+        <composite-id name="id" class="com.gcit.library.hibernate.entity.BookLoansId">
+            <key-property name="bookId" type="int">
+                <column name="BookId" />
+            </key-property>
+            <key-property name="branchId" type="int">
+                <column name="BranchId" />
+            </key-property>
+            <key-property name="cardNo" type="int">
+                <column name="CardNo" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="borrower" class="com.gcit.library.hibernate.entity.Borrower" update="false" insert="false" fetch="select">
+            <column name="CardNo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="libraryBranch" class="com.gcit.library.hibernate.entity.LibraryBranch" update="false" insert="false" fetch="select">
+            <column name="BranchId" not-null="true" />
+        </many-to-one>
+        <many-to-one name="book" class="com.gcit.library.hibernate.entity.Book" update="false" insert="false" fetch="select">
+            <column name="BookId" not-null="true" />
+        </many-to-one>
+        <property name="dateOut" type="date">
+            <column name="DateOut" length="10" />
+        </property>
+        <property name="dueDate" type="date">
+            <column name="DueDate" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

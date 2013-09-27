@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="MySessionFactory">
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/library</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <mapping class="com.gcit.library.hibernate.entity.Book" />
+        <mapping class="com.gcit.library.hibernate.entity.BookCopies" />
+        <mapping class="com.gcit.library.hibernate.entity.Libraryborrower" />
+        <mapping class="com.gcit.library.hibernate.entity.BookAuthors" />
+        <mapping class="com.gcit.library.hibernate.entity.Borrower" />
+        <mapping class="com.gcit.library.hibernate.entity.Publisher" />
+        <mapping class="com.gcit.library.hibernate.entity.LibraryBranch" />
+        <mapping class="com.gcit.library.hibernate.entity.BookLoans" />
+        <mapping class="com.gcit.library.hibernate.entity.Librarian" />
+        <mapping class="com.gcit.library.hibernate.entity.Admin" />
+    </session-factory>
+</hibernate-configuration>
